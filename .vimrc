@@ -23,6 +23,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'sjl/badwolf'
+NeoBundle 'Shougo/unite.vim'
 
 call neobundle#end()
 
@@ -56,3 +57,11 @@ augroup vimrc-auto-mkdir  " {{{
     endif
   endfunction  " }}}
 augroup END  " }}}
+
+""" tab(tc, tx, tn, tp, tn(n=1,2,3,,,,)) """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand('~/.vimrc_tab'))
+  source ~/.vimrc_tab
+endif
+
+""" key bind """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <C-U><C-B> :Unite buffer<CR>

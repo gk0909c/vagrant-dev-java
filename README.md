@@ -3,7 +3,7 @@ create vm for java development on vagrant
 
 ## Box
 fix Vagrantfile and specify your box.
-now support only ubuntu.
+now I comfirmed only on ubuntu.
 
 
 ## Environment on vagrant
@@ -14,4 +14,9 @@ now support only ubuntu.
 * Eclim : 2.5.0
 
 if you want other version, fix shell script file.
+
+## Other
+if you are behind proxy, set variable 'http_proxy' and 'NO_PROXY environment',
+or not comment out proxy describe in Vagrantfile
+
 
