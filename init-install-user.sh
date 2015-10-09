@@ -22,5 +22,34 @@ mkdir -p ~/.vim/bundle
 git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 cp /vagrant/.vimrc ~/
 
+### MAVEN ##########################################################################################
+HTTP_PROXY_HOST=`echo $http_proxy | cut -d ":"  -f 2`
+HTTP_PROXY_HOST=${HTTP_PROXY_HOST///}
+HTTP_PROXY_PORT=`echo $http_proxy | cut -d ":"  -f 3`
+
+cat << EOS > ~/.m2/settings.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+  <proxies>
+    <proxy>
+      <id>http_proxy</id>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>$HTTP_PROXY_HOST</host>
+      <port>$HTTP_PROXY_PORT</port>
+    </proxy>
+    <proxy>
+      <id>https_proxy</id>
+      <active>true</active>
+      <protocol>https</protocol>
+      <host>$HTTP_PROXY_HOST</host>
+      <port>$HTTP_PROXY_PORT</port>
+    </proxy>
+  </proxies>
+</settings>
+EOS
+
 ### .bashrc ########################################################################################
+echo export JAVA_OPTS=\"-Djava.net.useSystemProxies=true\" >> ~/.bashrc
 echo "export TERM=xterm-256color" >> ~/.bashrc

@@ -16,7 +16,12 @@ now I comfirmed only on ubuntu.
 if you want other version, fix shell script file.
 
 ## Other
-if you are behind proxy, set variable 'http_proxy' and 'NO_PROXY environment',
-or not comment out proxy describe in Vagrantfile
+if you are behind proxy
+* set variable 'http_proxy' and 'NO_PROXY environment' on your host machine
+
+if you are not behind proxy
+* comment out proxy describe in Vagrantfile
+* remove describe that create maven settings.xml, in init-install-user.sh
+
 
 
