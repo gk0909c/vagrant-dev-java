@@ -49,3 +49,15 @@ sudo make install
 
 ### Xvfb Install ###################################################################################
 apt-get install -y xvfb
+
+### Nodejs Install #################################################################################
+NODE_JS_URL=https://nodejs.org/dist/v4.1.2
+NODE_JS_TAR_BALL=node-v4.1.2-linux-x64.tar.gz
+NODE_JS_DIR=node-v4.1.2-linux-x64
+
+wget -nv $NODE_JS_URL/$NODE_JS_TAR_BALL
+tar -zxf $NODE_JS_TAR_BALL $NODE_JS_DIR
+mv $NODE_JS_DIR /usr/local
+ln -s /usr/local/$NODE_JS_DIR/bin/node /usr/bin/node
+ln -s /usr/local/$NODE_JS_DIR/bin/npm /usr/bin/npm
+rm $MVN_TAR_BALL

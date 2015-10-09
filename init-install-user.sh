@@ -53,3 +53,4 @@ EOS
 ### .bashrc ########################################################################################
 echo export JAVA_OPTS=\"-Djava.net.useSystemProxies=true\" >> ~/.bashrc
 echo "export TERM=xterm-256color" >> ~/.bashrc
+echo "alias mvn-sbr='mvn spring-boot:run'" >> ~/.bashrc

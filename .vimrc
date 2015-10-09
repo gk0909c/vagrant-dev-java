@@ -33,6 +33,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
 
 call neobundle#end()
 
@@ -66,6 +67,19 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+augroup conceal_setting
+  autocmd!
+  autocmd Filetype json setl conceallevel=0
+augroup END
+
+
+""" javascript-libraries-syntax """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup JavaScript Syntax
+  autocmd!
+  autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 0
+  autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
+augroup END                                                          
+
 """ Color Scheme """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 set background=dark
@@ -93,3 +107,4 @@ noremap <C-U><C-B> :Unite buffer<CR>
 
 """ command """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command XmlFormat :%!xmllint --format -
+
