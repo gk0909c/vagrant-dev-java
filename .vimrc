@@ -24,6 +24,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'sjl/badwolf'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 call neobundle#end()
 
@@ -40,7 +43,22 @@ augroup EclimAu
   autocmd FileType java let g:EclimJavaSearchSingleResult = 'edit'
 augroup END
 
-set completeopt=longest,menuone,preview
+set completeopt=longest,menuone
+set completeopt-=preview
+
+""" neosnippet """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neocomplete#enable_at_startup = 1
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 """ Color Scheme """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
