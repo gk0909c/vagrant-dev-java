@@ -1,10 +1,12 @@
 set number
 set title
 set ambiwidth=double
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set smartindent
+set autoindent
 set backspace=indent,eol,start
 set noswapfile
 set nobackup
@@ -12,6 +14,10 @@ set noundofile
 set cursorline
 hi clear CursorLine
 hi CursorLineNr term=bold cterm=NONE ctermfg=228 ctermbg=NONE
+
+augroup vimrc
+  autocmd! FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4
+augroup END
 
 """ NeoBundle """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('vim_starting')
@@ -22,7 +28,7 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'sjl/badwolf'
+NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
@@ -62,7 +68,8 @@ endif
 
 """ Color Scheme """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
-colorscheme badwolf
+set background=dark
+colorscheme hybrid
 
 """ auto make directory """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup vimrc-auto-mkdir  " {{{
@@ -83,3 +90,6 @@ endif
 
 """ key bind """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <C-U><C-B> :Unite buffer<CR>
+
+""" command """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command XmlFormat :%!xmllint --format -
