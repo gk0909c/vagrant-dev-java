@@ -34,6 +34,7 @@ NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'mattn/emmet-vim'
 
 call neobundle#end()
 
@@ -107,4 +108,10 @@ noremap <C-U><C-B> :Unite buffer<CR>
 
 """ command """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command XmlFormat :%!xmllint --format -
+
+""" ime controll """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_SI+=[<r
+set t_EI+=[<s[<0t
+set t_te+=[<0t[<s
+set ttimeoutlen=100
 
