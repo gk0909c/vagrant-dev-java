@@ -12,6 +12,7 @@ set noswapfile
 set nobackup
 set noundofile
 set cursorline
+set formatoptions-=ro
 hi clear CursorLine
 hi CursorLineNr term=bold cterm=NONE ctermfg=228 ctermbg=NONE
 
@@ -35,6 +36,7 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'scrooloose/nerdtree'
 
 call neobundle#end()
 
@@ -105,6 +107,7 @@ endif
 
 """ key bind """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <C-U><C-B> :Unite buffer<CR>
+noremap <C-N><C-T> :NERDTreeToggle<CR>
 
 """ command """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command XmlFormat :%!xmllint --format -
@@ -114,4 +117,13 @@ set t_SI+=[<r
 set t_EI+=[<s[<0t
 set t_te+=[<0t[<s
 set ttimeoutlen=100
+
+""" paste setting """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup paste-setting
+  autocmd!
+  autocmd InsertLeave * set nopaste
+augroup END
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
