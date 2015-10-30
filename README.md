@@ -2,9 +2,8 @@
 create vm for java development on vagrant
 
 ## Box
-fix Vagrantfile and specify your box.
-now I comfirmed only on ubuntu.
-
+specify your box in Vagrantfile.  
+now I comfirmed on ubuntu14.04 and Debian8.1.0.
 
 ## Environment on vagrant
 * Java : jdk-8u60-linux-x64
@@ -23,5 +22,7 @@ if you are not behind proxy
 * comment out proxy describe in Vagrantfile
 * remove describe that create maven settings.xml, in init-install-user.sh
 
-
+using Debian8.1.0
+* you need to install 'apt-transport-https' at first provisionning.
+* you need to install 'libswt-gtk-3-jni' before exec eclimd.
 

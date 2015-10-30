@@ -60,4 +60,4 @@ tar -zxf $NODE_JS_TAR_BALL $NODE_JS_DIR
 mv $NODE_JS_DIR /usr/local
 ln -s /usr/local/$NODE_JS_DIR/bin/node /usr/bin/node
 ln -s /usr/local/$NODE_JS_DIR/bin/npm /usr/bin/npm
-rm $MVN_TAR_BALL
+rm $NODE_JS_TAR_BALL

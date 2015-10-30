@@ -15,7 +15,7 @@ cp /vagrant/.eclimrc ~/
 
 wget -nv $ECLIM_URL/$ECLIM_JAR
 java -Dvim.files=$HOME/.vim -Declipse.home=$HOME/$ECLIPSE_DIR -jar $ECLIM_JAR install
-rm ECLIM_JAR
+rm $ECLIM_JAR
 
 ### VIM ############################################################################################
 mkdir -p ~/.vim/bundle
@@ -27,6 +27,7 @@ HTTP_PROXY_HOST=`echo $http_proxy | cut -d ":"  -f 2`
 HTTP_PROXY_HOST=${HTTP_PROXY_HOST///}
 HTTP_PROXY_PORT=`echo $http_proxy | cut -d ":"  -f 3`
 
+mkdir -p ~/.m2
 cat << EOS > ~/.m2/settings.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -54,3 +55,4 @@ EOS
 echo export JAVA_OPTS=\"-Djava.net.useSystemProxies=true\" >> ~/.bashrc
 echo "export TERM=xterm-256color" >> ~/.bashrc
 echo "alias mvn-sbr='mvn spring-boot:run'" >> ~/.bashrc
+echo "alias view='vim -R'" >> ~/.bashrc

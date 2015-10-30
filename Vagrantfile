@@ -3,6 +3,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.network "forwarded_port", guest: 8080, host: 18080
   config.vm.network "forwarded_port", guest: 3306, host: 13306
+  config.vm.network "forwarded_port", guest: 4848, host: 14848
 
   config.vm.provider "virtualbox" do |vb|
     #vb.gui = true
